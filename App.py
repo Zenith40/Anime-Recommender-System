@@ -1,7 +1,10 @@
 import streamlit as st
 import pickle
 import pandas as pd
+<<<<<<< HEAD
 
+=======
+>>>>>>> a12db0f1d3606eeb099e6acf29d6f833426d40ab
 
 
 def recommend(label):

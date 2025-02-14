@@ -1,7 +1,6 @@
 import streamlit as st
 import pickle
 import pandas as pd
-import gzip
 
 
 def recommend(label):
@@ -24,7 +23,7 @@ def recommend(label):
 anime_dict = pickle.load(open('anime_dict.pkl', 'rb'))
 anime = pd.DataFrame(anime_dict)
 
-similarity = pickle.load(gzip.open('similarity.pkl', 'rb'))
+similarity = pickle.load(open('similarity.pkl', 'rb'))
 
 
 st.title("Anime Recommender System")

@@ -1,6 +1,7 @@
 import streamlit as st
 import pickle
 import pandas as pd
+import numpy as np
 
 
 
@@ -12,13 +13,18 @@ def recommend(label):
     recommended_anime = []
     recommended_anime_poster = []
     recommended_anime_link = []
+    recommended_similarity_score = []
+
     for i in anime_list:
+        # anime
         recommended_anime.append(anime.loc[i[0]].title)
         # posters
         recommended_anime_poster.append(anime.loc[i[0]].image)
         # links
         recommended_anime_link.append(anime.loc[i[0]].links)
-    return recommended_anime, recommended_anime_poster, recommended_anime_link
+        # score
+        recommended_similarity_score.append(f'{np.around(i[1]*100,2)} %')
+    return recommended_anime, recommended_anime_poster, recommended_anime_link, recommended_similarity_score
 
 
 anime_dict = pickle.load(open('anime_dict.pkl', 'rb'))
@@ -43,25 +49,28 @@ if st.button("Recommend",use_container_width=True):
     st.write('')
     st.write('')
 
-    name, posters, link = recommend(select_anime_name)
+    name, posters, link, score = recommend(select_anime_name)
 
     col1, col2, col3 = st.columns(3)
 
     with col1:
         st.image(posters[0])
         st.write(name[0])
+        st.write(f'Similarity Score : {score[0]}')
         st.write('')
         st.link_button("Know More", link[0],use_container_width=True)
 
     with col2:
         st.image(posters[1])
         st.write(name[1])
+        st.write(f'Similarity Score : {score[1]}')
         st.write('')
         st.link_button("Know More", link[1],use_container_width=True)
 
     with col3:
         st.image(posters[2])
         st.write(name[2])
+        st.write(f'Similarity Score : {score[2]}')
         st.write('')
         st.link_button("Know More", link[2],use_container_width=True)
 
@@ -74,18 +83,21 @@ if st.button("Recommend",use_container_width=True):
     with col4:
         st.image(posters[3])
         st.write(name[3])
+        st.write(f'Similarity Score : {score[3]}')
         st.write('')
         st.link_button("Know More", link[3],use_container_width=True)
 
     with col5:
         st.image(posters[4])
         st.write(name[4])
+        st.write(f'Similarity Score : {score[4]}')
         st.write('')
         st.link_button("Know More", link[4],use_container_width=True)
 
     with col6:
         st.image(posters[5])
         st.write(name[5])
+        st.write(f'Similarity Score : {score[5]}')
         st.write('')
         st.link_button("Know More", link[5],use_container_width=True)
 
@@ -98,17 +110,20 @@ if st.button("Recommend",use_container_width=True):
     with col7:
         st.image(posters[6])
         st.write(name[6])
+        st.write(f'Similarity Score : {score[6]}')
         st.write('')
         st.link_button("Know More", link[6],use_container_width=True)
 
     with col8:
         st.image(posters[7])
         st.write(name[7])
+        st.write(f'Similarity Score : {score[7]}')
         st.write('')
         st.link_button("Know More", link[7],use_container_width=True)
 
     with col9:
         st.image(posters[8])
         st.write(name[8])
+        st.write(f'Similarity Score : {score[8]}')
         st.write('')
         st.link_button("Know More", link[8],use_container_width=True)

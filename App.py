@@ -13,11 +13,11 @@ def recommend(label):
     recommended_anime_poster = []
     recommended_anime_link = []
     for i in anime_list:
-        recommended_anime.append(anime.iloc[i[0]].title)
+        recommended_anime.append(anime.loc[i[0]].title)
         # posters
-        recommended_anime_poster.append(anime.iloc[i[0]].image)
+        recommended_anime_poster.append(anime.loc[i[0]].image)
         # links
-        recommended_anime_link.append(anime.iloc[i[0]].links)
+        recommended_anime_link.append(anime.loc[i[0]].links)
     return recommended_anime, recommended_anime_poster, recommended_anime_link
 
 
